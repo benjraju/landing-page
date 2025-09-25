@@ -2,22 +2,42 @@
    CSS VARIABLES & RESET
    ========================================== */
 :root {
-    /* Colors from the app */
-    --warm-background: #F8F7F5;
-    --warm-cream: #F5F3F0;
-    --light-background: #FDFCFB;
-    --warm-taupe: #E6D9D1;
-    --coffee-brown: #8B7355;
-    --chocolate: #6B5B47;
-    --primary-text: #2C2C2E;
-    --secondary-text: #6D6D70;
-    --tertiary-text: #8E8E93;
-    --brand-purple: #A88BEB;
-    --muted-pink: #F2E7D5;
-    --primary-button: #007AFF;
-    --shadow-light: rgba(0, 0, 0, 0.05);
-    --shadow-medium: rgba(0, 0, 0, 0.1);
-    --shadow-dark: rgba(0, 0, 0, 0.15);
+    /* Coffee Shop Theme Colors */
+    
+    /* Primary Colors */
+    --coffee-brown: #8B6F47; /* Primary buttons and highlights */
+    --chocolate: #4A3428; /* Headers and emphasis */
+    --warm-taupe: #A89384; /* Secondary actions and borders */
+    
+    /* Background Colors */
+    --warm-background: #F5F0E8; /* Main background (cream) */
+    --card-background: #FDFBF7; /* Card surfaces */
+    --light-background: #FDFBF7; /* Light surfaces */
+    
+    /* Text Colors */
+    --primary-text: #2C2825; /* Main text (soft black with warmth) */
+    --secondary-text: #6B5D54; /* Muted brown-gray */
+    --tertiary-text: #A89384; /* Warm taupe */
+    
+    /* Accent Colors */
+    --warm-coral: #DC8679; /* Accent with coffee undertones */
+    --warm-honey: #D4A574; /* Golden honey tone */
+    --sage-tea: #8B9B7A; /* Muted sage green */
+    --beige-tone: #D4C4B0; /* Hover states */
+    
+    /* UI System Colors */
+    --success: #33B15D; /* Warmer green */
+    --warning: #F2A833; /* Warmer orange */
+    --error: #DC4C46; /* Warmer red */
+    
+    /* Legacy aliases for backwards compatibility */
+    --warm-cream: #F5F0E8;
+    --brand-purple: #D4A574; /* Now honey */
+    --muted-pink: #DC8679; /* Now coral */
+    --primary-button: #8B6F47; /* Now coffee brown */
+    --shadow-light: rgba(139, 111, 71, 0.1);
+    --shadow-medium: rgba(139, 111, 71, 0.15);
+    --shadow-dark: rgba(139, 111, 71, 0.25);
     
     /* Typography */
     --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -128,7 +148,7 @@ body {
 
 .nav-link.cta-button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(0, 122, 255, 0.3);
+    box-shadow: 0 8px 25px rgba(139, 111, 71, 0.3);
 }
 
 .hamburger {
@@ -163,8 +183,8 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(circle at 30% 20%, var(--brand-purple), transparent 50%),
-                radial-gradient(circle at 70% 80%, var(--muted-pink), transparent 50%);
+    background: radial-gradient(circle at 30% 20%, var(--warm-honey), transparent 50%),
+                radial-gradient(circle at 70% 80%, var(--warm-coral), transparent 50%);
     opacity: 0.1;
     pointer-events: none;
 }
@@ -218,14 +238,14 @@ body {
 }
 
 .btn-primary {
-    background: var(--primary-button);
+    background: var(--coffee-brown);
     color: white;
-    box-shadow: 0 4px 20px rgba(0, 122, 255, 0.3);
+    box-shadow: 0 4px 20px rgba(139, 111, 71, 0.3);
 }
 
 .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 30px rgba(0, 122, 255, 0.4);
+    box-shadow: 0 8px 30px rgba(139, 111, 71, 0.4);
 }
 
 .btn-secondary {
@@ -248,7 +268,7 @@ body {
 }
 
 .btn-outline:hover {
-    background: var(--warm-taupe);
+    background: var(--beige-tone);
     transform: translateY(-2px);
 }
 
@@ -299,17 +319,16 @@ body {
     max-width: 100%;
 }
 
-.floating-raccoon {
-    position: absolute;
-    top: -60px;
-    right: -40px;
-    animation: bounce 4s ease-in-out infinite;
+.welcome-raccoon {
+    text-align: center;
+    margin-bottom: var(--space-lg);
+    animation: gentle-bounce 3s ease-in-out infinite;
 }
 
-.raccoon-mascot {
-    width: 120px;
+.raccoon-welcome {
+    width: 100px;
     height: auto;
-    filter: drop-shadow(0 10px 20px var(--shadow-medium));
+    filter: drop-shadow(0 8px 15px var(--shadow-medium));
 }
 
 @keyframes float {
@@ -320,6 +339,11 @@ body {
 @keyframes bounce {
     0%, 100% { transform: translateY(0px) rotate(5deg); }
     50% { transform: translateY(-15px) rotate(5deg); }
+}
+
+@keyframes gentle-bounce {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
 }
 
 /* ==========================================
@@ -377,7 +401,7 @@ body {
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    background: linear-gradient(135deg, var(--warm-cream), var(--muted-pink));
+    background: linear-gradient(135deg, var(--warm-cream), var(--warm-coral));
     display: flex;
     align-items: center;
     justify-content: center;
@@ -442,7 +466,7 @@ body {
 .step-number {
     width: 50px;
     height: 50px;
-    background: var(--primary-button);
+    background: var(--coffee-brown);
     color: white;
     border-radius: 50%;
     display: flex;
@@ -596,7 +620,7 @@ body {
 }
 
 .pricing-card.featured {
-    border: 2px solid var(--primary-button);
+    border: 2px solid var(--coffee-brown);
     transform: scale(1.05);
 }
 
@@ -605,7 +629,7 @@ body {
     top: -12px;
     left: 50%;
     transform: translateX(-50%);
-    background: var(--primary-button);
+    background: var(--coffee-brown);
     color: white;
     padding: var(--space-xs) var(--space-md);
     border-radius: var(--border-radius);
@@ -623,7 +647,7 @@ body {
 .pricing-price {
     font-size: 3rem;
     font-weight: 700;
-    color: var(--primary-button);
+    color: var(--coffee-brown);
     line-height: 1;
 }
 
@@ -633,7 +657,7 @@ body {
 }
 
 .pricing-savings {
-    background: #34C759;
+    background: var(--success);
     color: white;
     padding: var(--space-xs) var(--space-sm);
     border-radius: var(--border-radius-sm);
@@ -658,7 +682,7 @@ body {
     content: '';
     width: 16px;
     height: 16px;
-    background: #34C759;
+    background: var(--success);
     border-radius: 50%;
     margin-right: var(--space-sm);
     flex-shrink: 0;
@@ -716,7 +740,7 @@ body {
    FOOTER
    ========================================== */
 .footer {
-    background: var(--primary-text);
+    background: var(--chocolate);
     color: white;
     padding: var(--space-xl) 0 var(--space-lg);
 }
@@ -841,11 +865,12 @@ body {
         width: 280px;
     }
     
-    .floating-raccoon {
-        position: relative;
-        top: auto;
-        right: auto;
-        margin-top: var(--space-md);
+    .raccoon-welcome {
+        width: 80px;
+    }
+
+    .welcome-raccoon {
+        margin-bottom: var(--space-md);
     }
     
     .features-grid {
